@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Heart Disease Prediction</title>
+      <style>
+            body {
+                  font-family: Arial, sans-serif;
+                  margin: 50px;
+            }
+
+            .form-container {
+                  max-width: 400px;
+                  margin: auto;
+                  padding: 20px;
+                  border: 1px solid #ccc;
+                  border-radius: 10px;
+            }
+
+            .form-container input {
+                  width: 100%;
+                  padding: 10px;
+                  margin: 10px 0;
+                  border: 1px solid #ccc;
+                  border-radius: 5px;
+            }
+
+            .form-container button {
+                  width: 100%;
+                  padding: 10px;
+                  background-color: #28a745;
+                  color: white;
+                  border: none;
+                  border-radius: 5px;
+                  cursor: pointer;
+            }
+
+            .result {
+                  margin-top: 20px;
+                  font-size: 1.2em;
+                  text-align: center;
+            }
+      </style>
+</head>
+
+<body>
+      <div class="form-container">
+            <h2>Heart Disease Prediction</h2>
+            <form action="/" method="POST">
+                  <input type="number" name="smoking" placeholder="Smoking (0: No, 1: Yes)" required>
+                  <input type="number" name="alcohol_drinking" placeholder="Alcohol Drinking (0: No, 1: Yes)" required>
+                  <input type="number" name="stroke" placeholder="Stroke (0: No, 1: Yes)" required>
+                  <input type="number" name="physical_health" placeholder="Physical Health (0: No, 1: Yes)" required>
+                  <input type="number" name="mental_health" placeholder="Mental Health (0: No, 1: Yes)" required>
+                  <input type="number" name="diff_walking" placeholder="Difficulty Walking (0: No, 1: Yes)" required>
+                  <input type="number" name="age_category" placeholder="Age Category " required>
+                  <input type="number" name="diabetic" placeholder="Diabetic (0: No, 1: Yes)" required>
+                  <input type="number" name="physical_activity" placeholder="Physical Activity (0: No, 1: Yes)"
+                        required>
+                  <input type="number" name="asthma" placeholder="Asthma (0: No, 1: Yes)" required>
+                  <input type="number" name="kidney_disease" placeholder="Kidney Disease (0: No, 1: Yes)" required>
+                  <input type="number" name="skin_cancer" placeholder="Skin Cancer (0: No, 1: Yes)" required>
+                  <button type="submit">Predict</button>
+            </form>
+            {% if result %}
+            <div class="result">
+                  <strong>Prediction:</strong> {{ result }}
+            </div>
+            {% endif %}
+      </div>
+</body>
+
+</html>
