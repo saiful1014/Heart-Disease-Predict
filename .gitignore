@@ -16,3 +16,4 @@ env/
 
 # Ignore system files
 .DS_Store
+stacking_classifier_model.pkl
