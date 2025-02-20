@@ -2,74 +2,146 @@
 <html lang="en">
 
 <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Heart Disease Prediction</title>
-      <style>
-            body {
-                  font-family: Arial, sans-serif;
-                  margin: 50px;
-            }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
 
-            .form-container {
-                  max-width: 400px;
-                  margin: auto;
-                  padding: 20px;
-                  border: 1px solid #ccc;
-                  border-radius: 10px;
-            }
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
 
-            .form-container input {
-                  width: 100%;
-                  padding: 10px;
-                  margin: 10px 0;
-                  border: 1px solid #ccc;
-                  border-radius: 5px;
-            }
+        .form-container input[type="number"],
+        .form-container input[type="radio"] {
+            margin: 10px 0;
+        }
 
-            .form-container button {
-                  width: 100%;
-                  padding: 10px;
-                  background-color: #28a745;
-                  color: white;
-                  border: none;
-                  border-radius: 5px;
-                  cursor: pointer;
-            }
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-            .result {
-                  margin-top: 20px;
-                  font-size: 1.2em;
-                  text-align: center;
-            }
-      </style>
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .radio-group {
+            margin: 10px 0;
+        }
+
+        .radio-group label {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 
 <body>
-      <div class="form-container">
-            <h2>Heart Disease Prediction</h2>
-            <form action="/" method="POST">
-                  <input type="number" name="smoking" placeholder="Smoking (0: No, 1: Yes)" required>
-                  <input type="number" name="alcohol_drinking" placeholder="Alcohol Drinking (0: No, 1: Yes)" required>
-                  <input type="number" name="stroke" placeholder="Stroke (0: No, 1: Yes)" required>
-                  <input type="number" name="physical_health" placeholder="Physical Health (0: No, 1: Yes)" required>
-                  <input type="number" name="mental_health" placeholder="Mental Health (0: No, 1: Yes)" required>
-                  <input type="number" name="diff_walking" placeholder="Difficulty Walking (0: No, 1: Yes)" required>
-                  <input type="number" name="age_category" placeholder="Age Category " required>
-                  <input type="number" name="diabetic" placeholder="Diabetic (0: No, 1: Yes)" required>
-                  <input type="number" name="physical_activity" placeholder="Physical Activity (0: No, 1: Yes)"
-                        required>
-                  <input type="number" name="asthma" placeholder="Asthma (0: No, 1: Yes)" required>
-                  <input type="number" name="kidney_disease" placeholder="Kidney Disease (0: No, 1: Yes)" required>
-                  <input type="number" name="skin_cancer" placeholder="Skin Cancer (0: No, 1: Yes)" required>
-                  <button type="submit">Predict</button>
-            </form>
-            {% if result %}
-            <div class="result">
-                  <strong>Prediction:</strong> {{ result }}
+    <div class="form-container">
+        <h2>Heart Disease Prediction</h2>
+        <form action="/" method="POST">
+            <!-- Smoking -->
+            <div class="radio-group">
+                <label>Smoking:</label>
+                <label><input type="radio" name="smoking" value="1" required> Yes</label>
+                <label><input type="radio" name="smoking" value="0"> No</label>
             </div>
-            {% endif %}
-      </div>
+
+            <!-- Alcohol Drinking -->
+            <div class="radio-group">
+                <label>Alcohol Drinking:</label>
+                <label><input type="radio" name="alcohol_drinking" value="1" required> Yes</label>
+                <label><input type="radio" name="alcohol_drinking" value="0"> No</label>
+            </div>
+
+            <!-- Stroke -->
+            <div class="radio-group">
+                <label>Stroke:</label>
+                <label><input type="radio" name="stroke" value="1" required> Yes</label>
+                <label><input type="radio" name="stroke" value="0"> No</label>
+            </div>
+
+            <!-- Physical Health -->
+            <div class="radio-group">
+                <label>Physical Health:</label>
+                <label><input type="number" name="physical_health" id="physical_health" placeholder="Enter Health Condition 0 to 30" required>
+            </div>
+
+            <!-- Mental Health -->
+            <div class="radio-group">
+                <label>Mental Health:</label>
+                <label><input type="number" name="mental_health" id="mental_health" placeholder="Enter Health Condition 0 to 30" required>
+            </div>
+
+            <!-- Difficulty Walking -->
+            <div class="radio-group">
+                <label>Difficulty Walking:</label>
+                <label><input type="radio" name="diff_walking" value="1" required> Yes</label>
+                <label><input type="radio" name="diff_walking" value="0"> No</label>
+            </div>
+
+            <div class="radio-group">
+                <label for="age_category">Age Category:</label>
+                <input type="number" name="age_category" id="age_category" placeholder="Enter age category" required>
+
+            </div>
+            <!-- Diabetic -->
+            <div class="radio-group">
+                <label>Diabetic:</label>
+                <label><input type="radio" name="diabetic" value="1" required> Yes</label>
+                <label><input type="radio" name="diabetic" value="0"> No</label>
+            </div>
+
+            <!-- Physical Activity -->
+            <div class="radio-group">
+                <label>Physical Activity:</label>
+                <label><input type="radio" name="physical_activity" value="1" required> Yes</label>
+                <label><input type="radio" name="physical_activity" value="0"> No</label>
+            </div>
+
+            <!-- Asthma -->
+            <div class="radio-group">
+                <label>Asthma:</label>
+                <label><input type="radio" name="asthma" value="1" required> Yes</label>
+                <label><input type="radio" name="asthma" value="0"> No</label>
+            </div>
+
+            <!-- Kidney Disease -->
+            <div class="radio-group">
+                <label>Kidney Disease:</label>
+                <label><input type="radio" name="kidney_disease" value="1" required> Yes</label>
+                <label><input type="radio" name="kidney_disease" value="0"> No</label>
+            </div>
+
+            <!-- Skin Cancer -->
+            <div class="radio-group">
+                <label>Skin Cancer:</label>
+                <label><input type="radio" name="skin_cancer" value="1" required> Yes</label>
+                <label><input type="radio" name="skin_cancer" value="0"> No</label>
+            </div>
+
+            <button type="submit">Predict</button>
+        </form>
+        {% if result %}
+        <div class="result">
+            <strong>Prediction:</strong> {{ result }}
+        </div>
+        {% endif %}
+    </div>
 </body>
 
 </html>
