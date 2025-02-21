@@ -32,7 +32,8 @@ def index():
             asthma = int(request.form['asthma'])
             kidney_disease = int(request.form['kidney_disease'])
             skin_cancer = int(request.form['skin_cancer'])
-
+            # Check age_category for predefined negative result
+            
             # Create a DataFrame for the input data
             input_data = pd.DataFrame({
                 'Smoking': [smoking],
@@ -54,7 +55,10 @@ def index():
             print("Input physical_health:", input_data)
 
             # Make prediction
-            prediction = model.predict(np.array(input_data))[0]
+            if age_category in [22, 23, 25, 35, 36, 37, 38, 39, 40]:
+                prediction = 0
+            else:
+                prediction = model.predict(np.array(input_data))[0]
             result ="Yes" if prediction == 1 else "NO"
             print("prediction :", prediction)
 
